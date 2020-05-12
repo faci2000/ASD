@@ -1,0 +1,16 @@
+Michał Faciszewski
+
+Jeżeli mowa o najszybszym możliwym algorytmie, rozpocząłbym od sortowania poprzez zliczanie. 
+Tablice zliczającą zostawiam na później, gydż bedzie mi potrzebna. Następnie, ide po kolejnych 
+elementach posortowanej tablicy wejściowej  sprawdzając czy można je utworzyć z innych elementów. 
+Sprawdzanie będzie następujące: dla każdego elementu T[i] przechodzę od początku tablicy biorąc 
+kolejne T[k],a następnie sprawdzam czy w tablicy zliczającej wystąpił element T[i] - T[k]. Jeśli
+takowy element istnieje i nie jest on równy T[i], ani T[k], to dla danego T[i] da sie utworzyć 
+taką sumę, więc przechodze do następnego elementu T[i+1], natomiast jeśli nie, to sprawdzam kolejne 
+T[k] i jeśli nie uda mi się stworzyć odpowiednieje sumy, kończę algorytm, z wynikiem negatywnym.
+Złożonośc czasowa powyższego algorytmu to O(n^2).
+
+Jeśli natomiast nie ma możliwości skorzystania z sortowania poprzez zliczanie, można zaimplementować
+zwykłego quicksorta, a następnie za pomocą wyszukiwania binarnego sprawdzać isntnienie elemntów T[i] - T[k]
+w posortowanej tablicy wejściowej.
+Złożonośc czasowa powyższego algorytmu będzie wtedy wynosiła O(n^2*log(n)).

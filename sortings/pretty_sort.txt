@@ -1,0 +1,57 @@
+Michał Faciszewski
+
+def first_is_grater(a,b):
+    if a[0]>b[0]:
+        return True
+    elif a[1]<b[1]:
+        return True
+    else:
+        return False
+def partition(tab, left, right):
+    pivot=tab[right]
+    while left<=right:
+        while first_is_grater(tab[left],pivot ) and left<=right:
+            left+=1
+        while first_is_grater(pivot,tab[right]) and left<=right:
+            right-=1
+        if left<=right:
+            tab[left],tab[right]=tab[right],tab[left]
+            left+=1
+            right-=1
+    return left,right
+
+def quickSort(tab,left,right):
+    if (right-left)>0:
+        middle_l,middle_r = partition(tab,left,right)
+        quickSort(tab,left,middle_r)
+        quickSort(tab,middle_l,right)
+
+def callcualte_pretty_values(value):
+    jednokrotne=0
+    wielokrotne=0
+    numbers=[0 for i in range(10)]
+    for i in range(len(value)):
+        print(ord('0'))
+        numbers[ord(value[i])-ord('0')]+=1
+    for i in range(10):
+        if numbers[i]==1:
+            jednokrotne+=1
+        elif numbers[i]!=0:
+            wielokrotne+=1
+    return (jednokrotne,wielokrotne,value)
+
+def pretty_sort(T):
+    Pretty_values=[(0,0,'') for i in range(len(T))]
+    for i in range(len(T)):
+        Pretty_vallues[i]=callculate_pretty_values(str(T[i]))
+    quickSort(Pretty_values,0,len(Pretty_values)-1)
+    for i in range(len(T)):
+        T[i]=Pretty_values[i][2]
+    return T
+
+Swój algorytm rozpoczynam od oblczenia cyfr jednokrotnych i wielokrotnych
+dla kazdej liczby zawartej w wejsciowej tablicy. Nastepnie korzystajac 
+quicksorta, ze zmodyfikowanym porównywaniem sortuje tablice z wartościami
+cyfr jednokrotnych i wielokrotnych. Na koncu jedynie przepisuje tablice, 
+aby otrzymać żadne wyjście funkcji. Złożonośc czasowa to O(m+n+nlogn+n), 
+gdzie m to suma długosci liczb, a wiec w ogólnosci O(m+nlogn).
